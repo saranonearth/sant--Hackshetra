@@ -8,7 +8,7 @@ import Patient from './components/Patient';
 import Context from './contextStore/Context';
 import HospitalDash from './components/HospitalDash.jsx';
 import reducer from './reducers/rootReducer';
-
+import Error404 from './components/Error404';
 function App() {
   const initialState = useContext(Context);
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -24,6 +24,7 @@ function App() {
             <Route path='/onboard/Hospital' component={OnboardHospital} />{' '}
             <Route path='/onboard/HospitalDash' component={HospitalDash} />{' '}
             <Route path='/onboard' component={Onboard} />{' '}
+            <Route component={Error404} />
           </Switch>{' '}
         </HashRouter>{' '}
       </div>

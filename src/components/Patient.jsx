@@ -44,10 +44,13 @@ const Patient = props => {
           'Content-Type': 'application/json'
         }
       };
-      console.log(state.user._id);
-      const body = JSON.stringify({ ...formData, user: state.user._id });
+      const body = JSON.stringify(...formData);
 
-      const res = await axios.post('http://localhost:4000/user', body, config);
+      const res = await axios.post(
+        'http://localhost:4000/user/patient',
+        body,
+        config
+      );
       console.log(res);
       // setFormData({
       //   ...formData,

@@ -20,10 +20,10 @@ const Onboard = props => {
 
   if (state.isAuth == false) return <Redirect to={'/'} />;
   if (state.user.userType === 'doctors')
-    return <Redirect to='/onboard/doctordash' />;
+    return <Redirect to='/onboard/Doctor' />;
 
   if (state.user.userType === 'hospitals')
-    return <Redirect to='/onboard/HospitalDash' />;
+    return <Redirect to='/onboard/Hospital' />;
 
   const setDoctor = async () => {
     try {
@@ -44,10 +44,10 @@ const Onboard = props => {
         payload: res.data.user
       });
       if (state.user.userType === 'doctors') {
-        props.history.push('/onboard/DoctorDash');
+        props.history.push('/onboard/Doctor');
       }
       if (state.user.userType === 'hospitals') {
-        props.history.push('/onboard/HospitalDash');
+        props.history.push('/onboard/Hospital');
       }
     } catch (error) {
       console.log(error);

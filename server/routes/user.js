@@ -44,7 +44,7 @@ router.patch('/', async (req, res) => {
 
 router.post('/patient', async (req, res) => {
     const {
-        user,
+
         name,
         age,
         sex,
@@ -65,7 +65,7 @@ router.post('/patient', async (req, res) => {
     } = req.body;
     try {
         const newPatient = new Patient({
-            user,
+
             name,
             age,
             sex,
@@ -117,8 +117,9 @@ router.delete('/patient', isAuth, async () => {
 
 // create Doctor ()
 
-router.post('/doctor', isAuth, async (req, res) => {
+router.post('/doctor', async (req, res) => {
     const {
+        user,
         phone,
         address,
         specialization
@@ -126,6 +127,7 @@ router.post('/doctor', isAuth, async (req, res) => {
 
     try {
         const newDoctor = new Doctor({
+            user,
             phone,
             address,
             specialization

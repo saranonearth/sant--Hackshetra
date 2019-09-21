@@ -3,11 +3,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const PatientSchema = new Schema({
-    user: {
-        type: Schema.Types.ObjectId,
-        required: true,
-        ref: 'users'
-    },
     name: String,
     age: Number,
     sex: Number,

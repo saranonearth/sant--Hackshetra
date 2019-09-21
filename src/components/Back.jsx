@@ -3,7 +3,7 @@ import { Button } from 'semantic-ui-react';
 
 const Back = props => {
   const handleClick = () => {
-    console.log(props);
+    props.history.goBack();
   };
   return (
     <div>
