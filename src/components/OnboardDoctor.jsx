@@ -6,7 +6,8 @@ import { Button, Form, Container } from 'semantic-ui-react';
 const OnboardDoctor = props => {
   const [formData, setFormData] = useState({
     specialization: '',
-    phone: ''
+    phone: '',
+    address:''
   });
 
   const handleChange = e => {
@@ -52,6 +53,15 @@ const OnboardDoctor = props => {
                 <option value='Disease4'>Disease 4</option>
               </select>
             </div>
+          </Form.Field>
+          <Form.Field>
+            <label>Address:</label>
+            <input
+              name='address'
+              onChange={handleChange}
+              type='text'
+              required='required'
+            />
           </Form.Field>
           <Button>Send</Button>
         </Form>
