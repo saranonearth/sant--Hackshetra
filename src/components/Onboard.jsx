@@ -1,27 +1,23 @@
 import React, { useContext, useState } from 'react';
 // import Context from '../contextStore/Context';
-import { Button, Form, Container, Divider, Grid, Segment } from 'semantic-ui-react'
+import { Button, Form, Container, Divider, Grid, Segment,Card } from 'semantic-ui-react'
 import axios from 'axios';
 import { Redirect , Link } from 'react-router-dom';
 const Onboard = props => {
 
   return (
     <>
-    <Container>
-      <Segment>
-        <Grid columns={2}>
-          <Grid.Column>
-            <Link to={`/onboard/Doctor`}>
-            Doctor
-            </Link>
-          </Grid.Column>
-          <Grid.Column>
-            <Link to={`/onboard/Hospital`}>
+    <Container className="onboard">
+      <Link to={`/onboard/Doctor`}>
+            <div className="card">
+              Doctor
+            </div>
+      </Link>
+      <Link to={`/onboard/Hospital`}>
+        <div className="card">
             Hospital
-            </Link>
-          </Grid.Column>
-        </Grid>
-      </Segment>
+        </div>
+      </Link>
       </Container>
     </>
   );
