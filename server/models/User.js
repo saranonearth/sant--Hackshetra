@@ -18,10 +18,11 @@ const UserSchema = new Schema({
         type: String,
         default: null
     },
-    contact: [{
-        phone: String,
-        address: String
-    }],
+    profile: {
+        type: Schema.Types.ObjectId,
+        refPath: 'userType'
+    }
+
 }, {
     timestamps: true
 })
