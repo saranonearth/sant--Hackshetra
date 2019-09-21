@@ -1,13 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Form, Container } from 'semantic-ui-react';
-// import Context from '../contextStore/Context';
-// import axios from 'axios';
-// import { Redirect , Link } from 'react-router-dom';
 const OnboardHospital = props => {
   const [formData, setFormData] = useState({
     address: '',
     phone: '',
-    name:''
+    name: ''
   });
 
   const handleChange = e => {

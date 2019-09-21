@@ -21,7 +21,8 @@ const PatientSchema = new Schema({
     phone: Number,
     address: String,
     hospital: String,
-    img: String
+    img: String,
+    Pimg: String
 }, {
     timestamps: true
 })

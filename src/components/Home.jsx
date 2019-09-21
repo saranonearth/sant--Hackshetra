@@ -4,7 +4,6 @@ import Context from '../contextStore/Context';
 import config from '../config.json';
 import HomeImg from '../homeImg.png';
 import axios from 'axios';
-import { Button } from 'semantic-ui-react';
 
 const Home = props => {
   const { state, dispatch } = useContext(Context);

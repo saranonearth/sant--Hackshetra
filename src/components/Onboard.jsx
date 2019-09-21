@@ -4,15 +4,7 @@ import axios from 'axios';
 import Doctor from '../doctor.png';
 import Hospital from '../hospital.png';
 import { Redirect, Link } from 'react-router-dom';
-import {
-  Card,
-  Icon,
-  Image,
-  Container,
-  Menu,
-  Input,
-  Button
-} from 'semantic-ui-react';
+import { Card, Image } from 'semantic-ui-react';
 import TopPanel from './topPanel';
 const Onboard = props => {
   const { state, dispatch } = useContext(Context);

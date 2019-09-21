@@ -2,13 +2,12 @@ import React, { useContext, useState, useEffect } from 'react';
 import Context from '../contextStore/Context';
 import { Button, Container, Menu, Input, List } from 'semantic-ui-react';
 import axios from 'axios';
-import { Redirect, Link } from 'react-router-dom';
 import TopPanel from './topPanel.jsx';
 const DoctorDash = props => {
   const [istate, setState] = useState({
     list: []
   });
-  const { state, dispatch } = useContext(Context);
+  const { state } = useContext(Context);
   useEffect(() => {
     const getP = async () => {
       try {
@@ -27,6 +26,7 @@ const DoctorDash = props => {
     getP();
   }, []);
   console.log(istate);
+
   return (
     <div>
       <TopPanel />

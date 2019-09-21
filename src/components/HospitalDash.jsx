@@ -1,27 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Context from '../contextStore/Context';
-import {
-  Button,
-  Form,
-  Container,
-  Divider,
-  Grid,
-  Segment,
-  Card,
-  Image,
-  Menu,
-  Input,
-  List
-} from 'semantic-ui-react';
+import { Button, Container, Menu, Input, List } from 'semantic-ui-react';
 import axios from 'axios';
-import { Redirect, Link } from 'react-router-dom';
 import TopPanel from './topPanel.jsx';
 
 const HospitalDash = props => {
   const [istate, setState] = useState({
     list: []
   });
-  const { state, dispatch } = useContext(Context);
+  const { state } = useContext(Context);
   useEffect(() => {
     const getP = async () => {
       try {
@@ -42,6 +29,10 @@ const HospitalDash = props => {
   console.log(istate);
   const handleAddClick = () => {
     props.history.push('/onboard/Hospital/Patient');
+  };
+
+  const removeBtn = () => {
+    console.log('remove');
   };
   return (
     <div>
@@ -75,7 +66,7 @@ const HospitalDash = props => {
           {istate.list.map(e => (
             <List.Item key={e._id}>
               <List.Content floated='right'>
-                <Button>&times;</Button>
+                <Button onClick={removeBtn}>&times;</Button>
               </List.Content>
               <div className='list-heading'>
                 <div className='list-heads'>{e.name}</div>

@@ -1,16 +1,14 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Form, Container } from 'semantic-ui-react';
 import TopPanel from './topPanel';
 import axios from 'axios';
 import Back from './Back';
-import Context from '../contextStore/Context';
 
 // import axios from 'axios';
 // import { Redirect , Link } from 'react-router-dom';
 const Patient = props => {
   const [formData, setFormData] = useState({
     name: '',
-    contact: '',
     age: '',
     sex: '',
     cp: '',
@@ -28,24 +26,39 @@ const Patient = props => {
     phone: '',
     address: ''
   });
-  const { state, dispatch } = useContext(Context);
+
+  const [image, setImage] = useState('');
   const handleChange = e => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
+  const handleImageUpload = async () => {
+    const data = new FormData();
+    data.append('file', image);
+    data.append('upload_preset', 'mappins');
+    data.append('cloud_name', 'saranonearth');
+    const res = await axios.post(
+      'https://api.cloudinary.com/v1_1/saranonearth/image/upload',
+      data
+    );
+    console.log(res.data.url);
+    return res.data.url;
+  };
 
   const onSubmit = async e => {
     e.preventDefault();
     console.log(formData);
     try {
+      const img = await handleImageUpload();
+      console.log(img);
       const config = {
         headers: {
           'Content-Type': 'application/json'
         }
       };
-      const body = JSON.stringify(...formData);
+      const body = JSON.stringify({ ...formData, img });
 
       const res = await axios.post(
         'http://localhost:4000/user/patient',
@@ -53,27 +66,27 @@ const Patient = props => {
         config
       );
       console.log(res);
-      // setFormData({
-      //   ...formData,
-      //   name: '',
-      //   contact: '',
-      //   age: '',
-      //   sex: '',
-      //   cp: '',
-      //   trestbps: '',
-      //   chol: '',
-      //   fbs: '',
-      //   restecg: '',
-      //   thalach: '',
-      //   exang: '',
-      //   oldpeak: '',
-      //   slope: '',
-      //   ca: '',
-      //   thal: '',
-      //   hospital: '',
-      //   phone: '',
-      //   address: ''
-      // });
+      setFormData({
+        ...formData,
+        name: '',
+        contact: '',
+        age: '',
+        sex: '',
+        cp: '',
+        trestbps: '',
+        chol: '',
+        fbs: '',
+        restecg: '',
+        thalach: '',
+        exang: '',
+        oldpeak: '',
+        slope: '',
+        ca: '',
+        thal: '',
+        hospital: '',
+        phone: '',
+        address: ''
+      });
     } catch (error) {
       console.log(error);
     }
@@ -136,7 +149,7 @@ const Patient = props => {
             <label>Contact :</label>
             <div className='form-item'>
               <input
-                name='contact'
+                name='phone'
                 type='number'
                 onChange={handleChange}
                 required='required'
@@ -155,14 +168,14 @@ const Patient = props => {
               />
             </div>
           </Form.Field>
-          <Form.Field>
+          {/* <Form.Field>
             <label>Doctor :</label>
             <div className='form-item'>
               <select name='doctor' onChange={handleChange}>
                 <option value=''></option>
               </select>
             </div>
-          </Form.Field>
+          </Form.Field> */}
           <Form.Field>
             <label>Cp :</label>
             <div className='form-item'>
@@ -295,7 +308,12 @@ const Patient = props => {
               />
             </div>
           </Form.Field>
-
+          <input
+            accept='image/*'
+            id='image'
+            type='file'
+            onChange={e => setImage(e.target.files[0])}
+          />
           <Button className='clg'>Send</Button>
         </Form>
       </Container>

@@ -5,7 +5,7 @@ import axios from 'axios';
 import Context from '../contextStore/Context';
 import { Redirect } from 'react-router-dom';
 const OnboardDoctor = props => {
-  const { state, dispatch } = useContext(Context);
+  const { state } = useContext(Context);
 
   const [formData, setFormData] = useState({
     specialization: '',

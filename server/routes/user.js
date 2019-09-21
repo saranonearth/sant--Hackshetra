@@ -61,7 +61,9 @@ router.post('/patient', async (req, res) => {
         thal,
         hospital,
         phone,
-        address
+        address,
+        img,
+        Pimg
     } = req.body;
     try {
         const newPatient = new Patient({
@@ -82,7 +84,9 @@ router.post('/patient', async (req, res) => {
             thal,
             hospital,
             phone,
-            address
+            address,
+            img,
+            Pimg
         })
 
         await newPatient.save();
