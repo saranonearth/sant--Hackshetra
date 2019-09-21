@@ -2,7 +2,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
 
 .home {
@@ -11,7 +11,7 @@
 
 .title {
   font-size: 8vw;
-  font-family:sans-serif;
+  font-family: sans-serif;
 }
 
 .join {
@@ -27,8 +27,8 @@
 
 .onboard {
   position: absolute;
-  top:50%;
-  left:12%;
+  top: 50%;
+  left: 12%;
   /* overflow: hidden; */
 }
 
@@ -36,14 +36,16 @@
   display: inline;
 
   border-style: solid;
-  padding:20% ;
-  margin:3%;
+
+  padding: 20%;
+  margin: 3%;
 }
 
 .hospital-dash-container {
-  padding-top:10%;
+  padding-top: 10%;
 }
 
 .hospital-dashboard-title {
   text-align: center;
 }
+

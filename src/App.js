@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useContext, useReducer } from 'react';
 import { Route, HashRouter, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import Onboard from './components/Onboard';
 import OnboardDoctor from './components/OnboardDoctor';
 import OnboardHospital from './components/OnboardHospital';
-import Patient from './components/Patient'
+import Patient from './components/Patient';
+import Context from './contextStore/Context';
 import HospitalDash from './components/HospitalDash.jsx';
-
+import reducer from './reducers/rootReducer';
 
 function App() {
+  const initialState = useContext(Context);
+  const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <div className='App'>
     <HashRouter basename={process.env.PUBLIC_URL}>

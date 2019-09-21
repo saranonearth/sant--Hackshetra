@@ -15,18 +15,13 @@ import { Redirect, Link } from 'react-router-dom';
 const Onboard = props => {
   return (
     <>
-
-    <Container className="onboard">
-      <Link to={`/onboard/Doctor`}>
-            <div className="card">
-              Doctor
-            </div>
-      </Link>
-      <Link to={`/onboard/Hospital`}>
-        <div className="card">
-            Hospital
-        </div>
-      </Link>
+      <Container className='onboard'>
+        <Link to={`/onboard/Doctor`}>
+          <div className='card'>Doctor</div>
+        </Link>
+        <Link to={`/onboard/Hospital`}>
+          <div className='card'>Hospital</div>
+        </Link>
       </Container>
     </>
   );

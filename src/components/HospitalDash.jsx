@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 // import Context from '../contextStore/Context';
+
 import { Button, Form, Container, Divider, Grid, Segment,Card,Image } from 'semantic-ui-react'
 import axios from 'axios';
 import { Redirect , Link } from 'react-router-dom';
@@ -36,6 +37,7 @@ const HospitalDash = props => {
           </Grid.Column>
         </Grid.Row>
       </Grid>
+
       </Container>
     </>
   );
