@@ -6,6 +6,8 @@ import OnboardDoctor from './components/OnboardDoctor';
 import OnboardHospital from './components/OnboardHospital';
 import Patient from './components/Patient';
 import Context from './contextStore/Context';
+import Patient from './components/Patient';
+import HospitalDash from './components/HospitalDash.jsx';
 
 function App() {
   const initialState = useContext(Context);

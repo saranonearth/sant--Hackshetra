@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react';
-import { Button, Form, Container } from 'semantic-ui-react'
+import { Button, Form, Container } from 'semantic-ui-react';
 // import Context from '../contextStore/Context';
 // import axios from 'axios';
 // import { Redirect , Link } from 'react-router-dom';
 const OnboardDoctor = props => {
   const [formData, setFormData] = useState({
-      specialization: '',
-      phone: ''
-    });
+    specialization: '',
+    phone: ''
+  });
 
   const handleChange = e => {
     setFormData({
@@ -16,18 +16,17 @@ const OnboardDoctor = props => {
     });
   };
 
-const onSubmit=()=>{
-  console.log(formData);
-};
+  const onSubmit = () => {
+    console.log(formData);
+  };
 
-
-  return(
+  return (
     <>
-    <Container>
-      <h1>Doctor</h1>
-      <br/>
-      <Form onSubmit={onSubmit}>
-        <Form.Field>
+      <Container>
+        <h1>Doctor</h1>
+        <br />
+        <Form onSubmit={onSubmit}>
+          <Form.Field>
             <label htmlFor='phone'>Contact Number :</label>
             <div className='form-item'>
               <input
@@ -38,21 +37,25 @@ const onSubmit=()=>{
                 required='required'
               />
             </div>
-            </Form.Field>
-            <Form.Field>
+          </Form.Field>
+          <Form.Field>
             <label htmlFor='specialization'>Specialization</label>
             <div className='form-item'>
-              <select name='specialization' onChange={handleChange} required='required'>
+              <select
+                name='specialization'
+                onChange={handleChange}
+                required='required'
+              >
                 <option value='Disease1'>Disease 1</option>
                 <option value='Disease2'>Disease 2</option>
                 <option value='Disease3'>Disease 3</option>
                 <option value='Disease4'>Disease 4</option>
               </select>
             </div>
-            </Form.Field>
-            <Button>Send</Button>
-          </Form>
-        </Container>
+          </Form.Field>
+          <Button>Send</Button>
+        </Form>
+      </Container>
     </>
   );
 };
