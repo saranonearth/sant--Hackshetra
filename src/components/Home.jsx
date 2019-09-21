@@ -43,6 +43,15 @@ const Home = props => {
         <div>
           <p className='sub'>Making people healthy.</p>
           {state.isAuth ? (
+            <button
+              onClick={() => {
+                props.history.push('/onboard');
+              }}
+              className='ui button clg'
+            >
+              Dashboard
+            </button>
+          ) : (
             <GoogleLogin
               clientId={config.GIDKEY}
               buttonText='Join Us.'
@@ -50,15 +59,6 @@ const Home = props => {
               onFailure={onfailure}
               cookiePolicy={'single_host_origin'}
             />
-          ) : (
-            <button
-              onClick={() => {
-                props.history.push('/onboard');
-              }}
-              class='ui button clg'
-            >
-              Dashboard
-            </button>
           )}
         </div>
       </div>

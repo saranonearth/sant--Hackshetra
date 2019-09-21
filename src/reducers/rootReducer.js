@@ -12,7 +12,18 @@ export default function reducer(state, action) {
                 user: payload,
                     isAuth: true
             }
-            default:
-                return state;
+            case 'LOGOUT':
+                return {
+                    ...state,
+                    user: null,
+                        isAuth: false
+                }
+                case 'UTYPE':
+                    return {
+                        ...state,
+                        user: payload
+                    }
+                    default:
+                        return state;
     }
 }

@@ -7,14 +7,14 @@ const Hospital = require('../models/Hospital');
 
 //Update USER TYPE (PATCH)
 
-router.patch('/', isAuth, async (req, res) => {
+router.patch('/', async (req, res) => {
     const type = req.query.type;
-    console.log(type)
-
+    console.log(type);
+    const id = req.body.id;
     try {
 
         const user = await User.findById({
-            _id: req.user
+            _id: id
         });
         console.log(user)
         if (!user) {

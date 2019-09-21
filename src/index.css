@@ -45,3 +45,30 @@ body {
   background: #4dd0e0 !important;
   color: white !important;
 }
+
+.onboard {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  justify-content: space-between;
+  margin: auto;
+  align-self: center;
+  margin-top: 100px;
+
+}
+
+.nobg {
+  background: none !important;
+}
+
+.center {
+  text-align: center;
+}
+
+.white {
+  color: white !important;
+}
+
+.lg {
+  font-size: 1em !important;
+}
