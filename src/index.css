@@ -31,6 +31,51 @@ body {
   flex-direction: column;
 }
 
+.hospital-dash-container {
+  padding-top: 3%;
+}
+
+.hospital-dashboard-title {
+  text-align: center;
+  /* color: #4dd0e0; */
+}
+
+.hospital-dashboard-menu {
+  background-color: #4dd0e0 !important;
+}
+
+.list-head-colored {
+  background-color: #4dd0e0;
+  height: 40px;
+  padding: 0px;
+}
+
+.list-head-content-colored {
+  padding-top: 10px;
+  ;
+}
+
+.list-heading {
+  display: flex;
+  float: left;
+}
+
+.list-heads-title {
+  margin-left: 70%;
+  margin-right: 70%;
+  color: white;
+}
+
+.add-patient {
+  color: white;
+}
+
+.list-heads {
+  margin-left: 70%;
+  margin-right: 70%;
+  /* color:white; */
+}
+
 .title>h1 {
   font-size: 10em;
 }

@@ -7,50 +7,45 @@ import TopPanel from './topPanel.jsx';
 const HospitalDash = props => {
 
   return (
-    <>
+    <div>
     <TopPanel/>
     <h1 className='hospital-dashboard-title'>Hospital Dashboard</h1>
-    <Menu>
+    <Menu  className='hospital-dashboard-menu'>
       <Menu.Item>
         <Input icon='search' placeholder='Search...' />
       </Menu.Item>
         <Menu.Menu position='right'>
-      <Menu.Item name='Add Patient' onClick=''>
+      <Menu.Item icon='add' name='Add Patient' className='add-patient' onClick=''>
       </Menu.Item>
       </Menu.Menu>
     </Menu>
       <Container className='hospital-dash-container'>
       <List divided relaxed>
+      <List.Item className="list-head-colored">
+      <List.Content className="list-head-content-colored">
+      <div className='list-heading'>
+        <div className='list-heads-title'>Name</div>
+        <div className='list-heads-title'>Age</div>
+        <div className='list-heads-title'>Gender</div>
+        <div className='list-heads-title'>Contact</div>
+      </div>
+      </List.Content>
+      </List.Item>
         <List.Item>
         <List.Content floated='right'>
-        <Button>Add</Button>
+        <Button>&times;</Button>
       </List.Content>
-        <List.Icon name='stethoscope' size='large' verticalAlign='middle' />
-        <List.Content>
-          <List.Header>Patient 1</List.Header>
-        </List.Content>
+      <div className='list-heading'>
+        <div className='list-heads'>Name</div>
+        <div className='list-heads'>Age</div>
+        <div className='list-heads'>Gender</div>
+        <div className='list-heads'>Contact</div>
+      </div>
         </List.Item>
-        <List.Item>
-        <List.Content floated='right'>
-        <Button>Add</Button>
-      </List.Content>
-        <List.Icon name='stethoscope' size='large' verticalAlign='middle' />
-        <List.Content>
-          <List.Header>Patient 2</List.Header>
-        </List.Content>
-        </List.Item>
-        <List.Item>
-        <List.Content floated='right'>
-        <Button>Add</Button>
-      </List.Content>
-        <List.Icon name='stethoscope' size='large' verticalAlign='middle' />
-        <List.Content>
-          <List.Header>Patient 3</List.Header>
-        </List.Content>
-        </List.Item>
+
         </List>
       </Container>
-    </>
+    </div>
   );
 };
 

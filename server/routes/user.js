@@ -42,10 +42,10 @@ router.patch('/', async (req, res) => {
 
 //add new Patient
 
-router.post('/patient', isAuth, async (req, res) => {
+router.post('/patient', async (req, res) => {
     const {
+        user,
         name,
-        contact,
         age,
         sex,
         cp,
@@ -59,15 +59,14 @@ router.post('/patient', isAuth, async (req, res) => {
         slope,
         ca,
         thal,
-        target,
         hospital,
         phone,
         address
     } = req.body;
     try {
         const newPatient = new Patient({
+            user,
             name,
-            contact,
             age,
             sex,
             cp,
@@ -81,7 +80,6 @@ router.post('/patient', isAuth, async (req, res) => {
             slope,
             ca,
             thal,
-            target,
             hospital,
             phone,
             address
@@ -91,6 +89,7 @@ router.post('/patient', isAuth, async (req, res) => {
 
         return res.status(200).json(newPatient);
     } catch (error) {
+        console.log(error)
         res.status(500).json({
             msg: 'Server Error'
         })
