@@ -10,7 +10,11 @@ const OnboardDoctor = props => {
   const [formData, setFormData] = useState({
     specialization: '',
     phone: '',
+<<<<<<< HEAD
     address: ''
+=======
+    address:''
+>>>>>>> a311241343f93941de24d10c9511dc9b0ae3f5b7
   });
   if (state.isAuth == false) return <Redirect to={'/'} />;
   if (state.user.userType === 'doctors')
@@ -95,6 +99,15 @@ const OnboardDoctor = props => {
                 <option value='Disease4'>Disease 4</option>
               </select>
             </div>
+          </Form.Field>
+          <Form.Field>
+            <label>Address:</label>
+            <input
+              name='address'
+              onChange={handleChange}
+              type='text'
+              required='required'
+            />
           </Form.Field>
           <Button>Send</Button>
         </Form>

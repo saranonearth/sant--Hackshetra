@@ -117,3 +117,20 @@ body {
 .lg {
   font-size: 1em !important;
 }
+
+.user-card {
+  margin-top: 5%;
+  margin-left: 35%;
+  height: 60;
+  width: 60%;
+}
+
+.details {
+  display: flex;
+  float: left;
+}
+
+.details-value {
+  margin-left: 50%;
+  margin-right: 50%;
+}
