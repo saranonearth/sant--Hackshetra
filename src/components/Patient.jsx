@@ -1,14 +1,14 @@
 import React, { useContext, useState } from 'react';
-import { Button, Form, Container } from 'semantic-ui-react'
+import { Button, Form, Container } from 'semantic-ui-react';
 // import Context from '../contextStore/Context';
 // import axios from 'axios';
 // import { Redirect , Link } from 'react-router-dom';
 const Patient = props => {
   const [formData, setFormData] = useState({
-      name: '',
-      age: '',
-      doctor: ''
-    });
+    name: '',
+    age: '',
+    doctor: ''
+  });
 
   const handleChange = e => {
     setFormData({
@@ -17,18 +17,17 @@ const Patient = props => {
     });
   };
 
-const onSubmit=()=>{
-  console.log(formData);
-};
+  const onSubmit = () => {
+    console.log(formData);
+  };
 
-
-  return(
+  return (
     <>
-    <Container>
-      <h1>Patient Details:</h1>
-      <br/>
-      <Form onSubmit={onSubmit}>
-        <Form.Field>
+      <Container>
+        <h1>Patient Details:</h1>
+        <br />
+        <Form onSubmit={onSubmit}>
+          <Form.Field>
             <label>Name :</label>
             <div className='form-item'>
               <input
@@ -38,24 +37,29 @@ const onSubmit=()=>{
                 required='required'
               />
             </div>
-            </Form.Field>
-            <Form.Field>
+          </Form.Field>
+          <Form.Field>
             <label>Age :</label>
             <div className='form-item'>
-              <input name='age' type='number' onChange={handleChange} required='required'/>
+              <input
+                name='age'
+                type='number'
+                onChange={handleChange}
+                required='required'
+              />
             </div>
-            </Form.Field>
-            <Form.Field>
+          </Form.Field>
+          <Form.Field>
             <label>Doctor :</label>
             <div className='form-item'>
               <select name='doctor' onChange={handleChange} required='required'>
-                <option value=""></option>
+                <option value=''></option>
               </select>
             </div>
-            </Form.Field>
-            <Button>Send</Button>
-          </Form>
-        </Container>
+          </Form.Field>
+          <Button>Send</Button>
+        </Form>
+      </Container>
     </>
   );
 };
