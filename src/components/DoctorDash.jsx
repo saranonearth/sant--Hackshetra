@@ -1,38 +1,41 @@
-import React, { useContext, useState } from 'react';
-// import Context from '../contextStore/Context';
-import {
-  Button,
-  Form,
-  Container,
-  Divider,
-  Grid,
-  Segment,
-  Card,
-  Image,
-  Menu,
-  Input,
-  List
-} from 'semantic-ui-react';
+import React, { useContext, useState, useEffect } from 'react';
+import Context from '../contextStore/Context';
+import { Button, Container, Menu, Input, List } from 'semantic-ui-react';
 import axios from 'axios';
 import { Redirect, Link } from 'react-router-dom';
 import TopPanel from './topPanel.jsx';
 const DoctorDash = props => {
+  const [istate, setState] = useState({
+    list: []
+  });
+  const { state, dispatch } = useContext(Context);
+  useEffect(() => {
+    const getP = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:4000/user/doctor?doctor=${state.user.name}`
+        );
+        setState({
+          ...istate,
+          list: [...res.data]
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getP();
+  }, []);
+  console.log(istate);
   return (
     <div>
       <TopPanel />
-      <h1 className='hospital-dashboard-title'>Docter Dashboard</h1>
+      <h1 className='hospital-dashboard-title'>Doctor Dashboard</h1>
       <Menu className='hospital-dashboard-menu'>
         <Menu.Item>
           <Input icon='search' placeholder='Search...' />
         </Menu.Item>
-        <Menu.Menu position='right'>
-          <Menu.Item
-            icon='add'
-            name='Add Patient'
-            className='add-patient'
-            onClick=''
-          ></Menu.Item>
-        </Menu.Menu>
+        <Menu.Menu position='right'></Menu.Menu>
       </Menu>
       <Container className='hospital-dash-container'>
         <List divided relaxed>
@@ -46,17 +49,22 @@ const DoctorDash = props => {
               </div>
             </List.Content>
           </List.Item>
-          <List.Item>
-            <List.Content floated='right'>
-              <Button>&times;</Button>
-            </List.Content>
-            <div className='list-heading'>
-              <div className='list-heads'>Name</div>
-              <div className='list-heads'>Age</div>
-              <div className='list-heads'>Gender</div>
-              <div className='list-heads'>Contact</div>
-            </div>
-          </List.Item>
+          {istate.list.map(e => (
+            <List.Item key={e._id}>
+              <List.Content floated='right'>
+                <Button>&times;</Button>
+              </List.Content>
+              <div className='list-heading'>
+                <div className='list-heads'>{e.name}</div>
+                <div className='list-heads'>{e.age}</div>
+                <div className='list-heads'>
+                  {' '}
+                  {e.sex == 1 ? 'Male' : 'Female'}
+                </div>
+                <div className='list-heads'>{e.phone}</div>
+              </div>
+            </List.Item>
+          ))}
         </List>
       </Container>
     </div>

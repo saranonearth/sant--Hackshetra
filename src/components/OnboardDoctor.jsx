@@ -10,18 +10,9 @@ const OnboardDoctor = props => {
   const [formData, setFormData] = useState({
     specialization: '',
     phone: '',
-<<<<<<< HEAD
     address: ''
-=======
-    address:''
->>>>>>> a311241343f93941de24d10c9511dc9b0ae3f5b7
   });
   if (state.isAuth == false) return <Redirect to={'/'} />;
-  if (state.user.userType === 'doctors')
-    return <Redirect to='/onboard/Doctor' />;
-
-  if (state.user.userType === 'hospitals')
-    return <Redirect to='/onboard/Hospital' />;
   const handleChange = e => {
     setFormData({
       ...formData,

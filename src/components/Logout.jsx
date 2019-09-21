@@ -3,8 +3,8 @@ import config from '../config.json';
 import { GoogleLogout } from 'react-google-login';
 import Context from '../contextStore/Context';
 // import { Redirect } from 'react-router-dom';
-
-const Logout = () => {
+import { withRouter } from 'react-router-dom';
+const Logout = props => {
   const { state, dispatch } = useContext(Context);
 
   const logout = () => {
@@ -12,6 +12,7 @@ const Logout = () => {
     dispatch({
       type: 'LOGOUT'
     });
+    props.history.push('/');
   };
   return (
     <div>
@@ -24,4 +25,4 @@ const Logout = () => {
   );
 };
 
-export default Logout;
+export default withRouter(Logout);

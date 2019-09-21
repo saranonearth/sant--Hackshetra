@@ -1,7 +1,8 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
-
+import { withRouter } from 'react-router-dom';
 const Back = props => {
+  console.log(props);
   const handleClick = () => {
     props.history.goBack();
   };
@@ -14,4 +15,4 @@ const Back = props => {
   );
 };
 
-export default Back;
+export default withRouter(Back);

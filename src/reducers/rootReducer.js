@@ -7,6 +7,7 @@ export default function reducer(state, action) {
 
     switch (type) {
         case 'LOGIN':
+            window.localStorage.setItem('sante', JSON.stringify(payload))
             return {
                 ...state,
                 user: payload,

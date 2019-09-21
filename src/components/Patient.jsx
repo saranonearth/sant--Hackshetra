@@ -4,6 +4,7 @@ import TopPanel from './topPanel';
 import axios from 'axios';
 import Back from './Back';
 import Context from '../contextStore/Context';
+
 // import axios from 'axios';
 // import { Redirect , Link } from 'react-router-dom';
 const Patient = props => {
@@ -83,7 +84,7 @@ const Patient = props => {
       <TopPanel />
 
       <Container>
-        <Back props={props} />
+        <Back />
         <h1>Patient Details:</h1>
         <br />
         <Form onSubmit={onSubmit}>

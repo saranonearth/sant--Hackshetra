@@ -147,15 +147,17 @@ router.post('/doctor', async (req, res) => {
 
 // create Hospital
 
-router.post('/hospital', isAuth, async (req, res) => {
+router.post('/hospital', async (req, res) => {
     const {
+        user,
         phone,
         address,
         hospitalName
     } = req.body;
 
     try {
-        const newHospital = new Doctor({
+        const newHospital = new Hospital({
+            user,
             phone,
             address,
             hospitalName
@@ -165,6 +167,7 @@ router.post('/hospital', isAuth, async (req, res) => {
 
         return res.status(200).json(newHospital)
     } catch (error) {
+        console.log(error)
         res.status(500).json({
             msg: 'Server Error'
         })
@@ -174,7 +177,7 @@ router.post('/hospital', isAuth, async (req, res) => {
 
 //get all patience of hospital
 
-router.get('/hospital', isAuth, async (req, res) => {
+router.get('/hospital', async (req, res) => {
     const hospital = req.query.hospital;
 
     try {
@@ -191,7 +194,7 @@ router.get('/hospital', isAuth, async (req, res) => {
 })
 
 //get all patience of a doctor
-router.get('/doctor', isAuth, async (req, res) => {
+router.get('/doctor', async (req, res) => {
     const doctor = req.query.doctor;
 
     try {

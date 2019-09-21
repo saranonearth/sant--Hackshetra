@@ -3,9 +3,9 @@ import {
 } from 'react';
 // import jwt from 'jsonwebtoken';
 // import config from '../config';
-
+const userCred = JSON.parse(window.localStorage.getItem('sante'))
 const Context = createContext({
-    user: null,
+    user: (userCred !== null) ? userCred : null,
     isAuth: false
 
 })

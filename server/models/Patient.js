@@ -20,7 +20,8 @@ const PatientSchema = new Schema({
     doctor: String,
     phone: Number,
     address: String,
-    hospital: String
+    hospital: String,
+    img: String
 }, {
     timestamps: true
 })

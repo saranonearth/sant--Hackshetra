@@ -20,10 +20,10 @@ const Onboard = props => {
 
   if (state.isAuth == false) return <Redirect to={'/'} />;
   if (state.user.userType === 'doctors')
-    return <Redirect to='/onboard/Doctor' />;
+    return <Redirect to='/onboard/DoctorDash' />;
 
   if (state.user.userType === 'hospitals')
-    return <Redirect to='/onboard/Hospital' />;
+    return <Redirect to='/onboard/HospitalDash' />;
 
   const setDoctor = async () => {
     try {
