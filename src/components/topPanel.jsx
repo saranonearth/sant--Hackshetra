@@ -12,6 +12,10 @@ const TopPanel = props => {
       <Menu.Item>
         Sante
       </Menu.Item>
+    <Menu.Menu position='right'>
+    <Menu.Item icon='sign-out' name='Add Patient' onClick=''>
+    </Menu.Item>
+    </Menu.Menu>
     </Menu>
     </>
   );
