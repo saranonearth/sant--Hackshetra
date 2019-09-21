@@ -1,0 +1,54 @@
+import React, { useContext, useState } from 'react';
+import { Button, Form, Container } from 'semantic-ui-react'
+// import Context from '../contextStore/Context';
+// import axios from 'axios';
+// import { Redirect , Link } from 'react-router-dom';
+const OnboardHospital = props => {
+  const [formData, setFormData] = useState({
+      address: '',
+      phone: ''
+    });
+
+  const handleChange = e => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+const onSubmit=()=>{
+  console.log(formData);
+};
+
+  return (
+    <>
+    <Container>
+      <h1>Hospital</h1>
+          <Form  onSubmit={onSubmit}>
+            <Form.Field>
+            <label>Contact Number :</label>
+              <input
+                name='phone'
+                onChange={handleChange}
+                type='text'
+                maxLength='10'
+                required='required'
+              />
+            </Form.Field>
+            <Form.Field>
+            <label>Address</label>
+              <input
+                name='address'
+                onChange={handleChange}
+                type='text'
+                required='required'
+              />
+            </Form.Field>
+            <Button>Send</Button>
+          </Form>
+        </Container>
+    </>
+  );
+};
+
+export default OnboardHospital;

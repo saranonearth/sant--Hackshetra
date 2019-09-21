@@ -4,12 +4,16 @@ import { Link, Redirect } from 'react-router-dom';
 import Context from '../contextStore/Context';
 import config from '../config.json';
 import axios from 'axios';
-const Home=()=>{
+const Home=(props)=>{
 
-  // const { state, dispatch } = useContext(Context);
+  const state = useContext(Context);
   const responseGoogle = (response) => {
   console.log(response);
 }
+
+if (state.user && !state.user.onBoard) {
+    props.history.push('/onboard');
+  }
 
 const onsuccess = async user => {
     try {
