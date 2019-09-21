@@ -5,6 +5,8 @@ import Onboard from './components/Onboard';
 import OnboardDoctor from './components/OnboardDoctor';
 import OnboardHospital from './components/OnboardHospital';
 import Patient from './components/Patient'
+import HospitalDash from './components/HospitalDash.jsx';
+
 
 function App() {
   return (
@@ -15,8 +17,8 @@ function App() {
           <Route path='/onboard/Hospital/Patient' component={Patient} />{' '}
           <Route path='/onboard/Doctor' component={OnboardDoctor} />{' '}
           <Route path='/onboard/Hospital' component={OnboardHospital} />{' '}
+          <Route path='/onboard/HospitalDash' component={HospitalDash} />{' '}
           <Route path='/onboard' component={Onboard} />{' '}
-
         </Switch>{' '}
       </HashRouter>{' '}
     </div>

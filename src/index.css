@@ -1,0 +1,49 @@
+.home-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.home {
+  text-align: center;
+}
+
+.title {
+  font-size: 8vw;
+  font-family:sans-serif;
+}
+
+.join {
+  font-size: 3vw;
+  font-family: inherit;
+}
+
+.ball {
+  position: absolute;
+  border-radius: 100%;
+  opacity: 0.7;
+}
+
+.onboard {
+  position: absolute;
+  top:50%;
+  left:12%;
+  /* overflow: hidden; */
+}
+
+.card {
+  display: inline;
+
+  border-style: solid;
+  padding:20% ;
+  margin:3%;
+}
+
+.hospital-dash-container {
+  padding-top:10%;
+}
+
+.hospital-dashboard-title {
+  text-align: center;
+}
