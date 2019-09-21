@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import Context from '../contextStore/Context';
 import config from '../config.json';
+
 import { Button, Form, Container } from 'semantic-ui-react';
 import axios from 'axios';
 
@@ -20,7 +21,6 @@ const Home = props => {
     ball.style.transform = `scale(${Math.random()})`;
     ball.style.width = `${Math.random()}em`;
     ball.style.height = ball.style.width;
-
     balls.push(ball);
     document.body.append(ball);
   }
@@ -78,6 +78,7 @@ const Home = props => {
         cookiePolicy={'single_host_origin'}
       />
     </div>
+    </Container>
   );
 };
 

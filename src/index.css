@@ -36,6 +36,7 @@
   display: inline;
 
   border-style: solid;
+
   padding: 20%;
   margin: 3%;
 }
@@ -47,3 +48,4 @@
 .hospital-dashboard-title {
   text-align: center;
 }
+

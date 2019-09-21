@@ -13,19 +13,18 @@ function App() {
   const initialState = useContext(Context);
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <Context.Provider value={{ state, dispatch }}>
-      <div className='App'>
-        <HashRouter basename={process.env.PUBLIC_URL}>
-          <Switch>
-            <Route exact path='/' component={Home} />{' '}
-            <Route path='/onboard/Hospital/Patient' component={Patient} />{' '}
-            <Route path='/onboard/Doctor' component={OnboardDoctor} />{' '}
-            <Route path='/onboard/Hospital' component={OnboardHospital} />{' '}
-            <Route path='/onboard' component={Onboard} />{' '}
-          </Switch>{' '}
-        </HashRouter>{' '}
-      </div>
-    </Context.Provider>
+    <div className='App'>
+    <HashRouter basename={process.env.PUBLIC_URL}>
+        <Switch>
+          <Route exact path='/' component={Home} />{' '}
+          <Route path='/onboard/Hospital/Patient' component={Patient} />{' '}
+          <Route path='/onboard/Doctor' component={OnboardDoctor} />{' '}
+          <Route path='/onboard/Hospital' component={OnboardHospital} />{' '}
+          <Route path='/onboard/HospitalDash' component={HospitalDash} />{' '}
+          <Route path='/onboard' component={Onboard} />{' '}
+        </Switch>{' '}
+      </HashRouter>{' '}
+    </div>
   );
 }
 
