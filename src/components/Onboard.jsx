@@ -1,12 +1,21 @@
 import React, { useContext, useState } from 'react';
 // import Context from '../contextStore/Context';
-import { Button, Form, Container, Divider, Grid, Segment,Card } from 'semantic-ui-react'
-import axios from 'axios';
-import { Redirect , Link } from 'react-router-dom';
-const Onboard = props => {
 
+import {
+  Button,
+  Form,
+  Container,
+  Divider,
+  Grid,
+  Segment
+} from 'semantic-ui-react';
+
+import axios from 'axios';
+import { Redirect, Link } from 'react-router-dom';
+const Onboard = props => {
   return (
     <>
+
     <Container className="onboard">
       <Link to={`/onboard/Doctor`}>
             <div className="card">
