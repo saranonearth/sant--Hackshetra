@@ -6,9 +6,13 @@ export default function reducer(state, action) {
     } = action;
 
     switch (type) {
-
-
-        default:
-            return state;
+        case 'LOGIN':
+            return {
+                ...state,
+                user: payload,
+                    isAuth: true
+            }
+            default:
+                return state;
     }
 }

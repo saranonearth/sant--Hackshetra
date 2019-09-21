@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
         const url = 'https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=';
         const resq = await axios.get(url + token);
         const guser = resq.data;
-        console.log(guser.email);
+
 
         const user = await User.findOne({
             email: guser.email

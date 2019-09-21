@@ -1,51 +1,47 @@
-.home-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+html,
+body {
+  padding: 0;
+  margin: 0;
 }
 
 .home {
-  text-align: center;
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #4dd0e0;
 }
 
-.title {
-  font-size: 8vw;
-  font-family: sans-serif;
+.home-img>img {
+  width: 800px;
+  animation: 1s up;
 }
 
-.join {
-  font-size: 3vw;
-  font-family: inherit;
+@keyframes up {
+  0% {
+    transform: translateY(-1000px)
+  }
+
 }
 
-.ball {
-  position: absolute;
-  border-radius: 100%;
-  opacity: 0.7;
+.home-holder {
+  display: flex;
+  align-self: center;
+  flex-direction: column;
 }
 
-.onboard {
-  position: absolute;
-  top: 50%;
-  left: 12%;
-  /* overflow: hidden; */
+.title>h1 {
+  font-size: 10em;
 }
 
-.card {
-  display: inline;
-
-  border-style: solid;
-
-  padding: 20%;
-  margin: 3%;
+.sub {
+  font-size: 3em;
+  margin: 10px;
+  margin-left: 0;
 }
 
-.hospital-dash-container {
-  padding-top: 10%;
+.clg {
+  background: #4dd0e0 !important;
+  color: white !important;
 }
-
-.hospital-dashboard-title {
-  text-align: center;
-}
-
