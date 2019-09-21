@@ -78,7 +78,6 @@ const Home = props => {
         cookiePolicy={'single_host_origin'}
       />
     </div>
-    </Container>
   );
 };
 
