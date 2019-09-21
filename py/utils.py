@@ -3,6 +3,7 @@ from PIL import Image
 import pymongo
 from xgboost  import XGBClassifier
 import pandas as pd
+import requests
 from sklearn.model_selection import train_test_split
 
 def get_ocr_output(img_path):
@@ -43,3 +44,15 @@ class dataPipeline:
         xgb_fitted  = self.xgb_model.fit(X_train,y_train)
 
         return xgb_fitted
+
+def downloadImg(url,typ):
+    if typ=='PRE':
+        s= 'Pre'
+    else:
+        s="XRay"
+    with open('../resources/input_{s}.jpg', 'wb') as handle:
+            response = requests.get(url, stream=True)
+            for block in response.iter_content(1024):
+                if not block:
+                    break
+                handle.write(block)
