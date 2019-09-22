@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import Context from '../contextStore/Context';
 import { Button, Container, Menu, Input, List } from 'semantic-ui-react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import TopPanel from './topPanel.jsx';
 const DoctorDash = props => {
   const [istate, setState] = useState({
@@ -50,20 +51,20 @@ const DoctorDash = props => {
             </List.Content>
           </List.Item>
           {istate.list.map(e => (
-            <List.Item key={e._id}>
-              <List.Content floated='right'>
-                <Button>&times;</Button>
-              </List.Content>
-              <div className='list-heading'>
-                <div className='list-heads'>{e.name}</div>
-                <div className='list-heads'>{e.age}</div>
-                <div className='list-heads'>
-                  {' '}
-                  {e.sex == 1 ? 'Male' : 'Female'}
+            <Link key={e._id} to={`/patientDetails/${e._id}`}>
+              <List.Item>
+                <List.Content floated='right'></List.Content>
+                <div className='list-heading'>
+                  <div className='list-heads'>{e.name}</div>
+                  <div className='list-heads'>{e.age}</div>
+                  <div className='list-heads'>
+                    {' '}
+                    {e.sex == 1 ? 'Male' : 'Female'}
+                  </div>
+                  <div className='list-heads'>{e.phone}</div>
                 </div>
-                <div className='list-heads'>{e.phone}</div>
-              </div>
-            </List.Item>
+              </List.Item>
+            </Link>
           ))}
         </List>
       </Container>

@@ -28,15 +28,16 @@ const Patient = props => {
   });
 
   const [image, setImage] = useState('');
+  const [image2, setImage2] = useState('');
   const handleChange = e => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
-  const handleImageUpload = async () => {
+  const handleImageUpload = async imge => {
     const data = new FormData();
-    data.append('file', image);
+    data.append('file', imge);
     data.append('upload_preset', 'mappins');
     data.append('cloud_name', 'saranonearth');
     const res = await axios.post(
@@ -51,14 +52,15 @@ const Patient = props => {
     e.preventDefault();
     console.log(formData);
     try {
-      const img = await handleImageUpload();
+      const userImg = await handleImageUpload(image2);
+      const img = await handleImageUpload(image);
       console.log(img);
       const config = {
         headers: {
           'Content-Type': 'application/json'
         }
       };
-      const body = JSON.stringify({ ...formData, img });
+      const body = JSON.stringify({ ...formData, img, userImg });
 
       const res = await axios.post(
         'http://localhost:4000/user/patient',
@@ -87,6 +89,8 @@ const Patient = props => {
         phone: '',
         address: ''
       });
+      setImage('');
+      setImage2('');
     } catch (error) {
       console.log(error);
     }
@@ -105,6 +109,7 @@ const Patient = props => {
             <label>Name :</label>
             <div className='form-item'>
               <input
+                value={formData.name}
                 name='name'
                 onChange={handleChange}
                 type='text'
@@ -116,6 +121,7 @@ const Patient = props => {
             <label>Hospital :</label>
             <div className='form-item'>
               <input
+                value={formData.hospital}
                 name='hospital'
                 onChange={handleChange}
                 type='text'
@@ -128,6 +134,7 @@ const Patient = props => {
             <div className='form-item'>
               <input
                 name='address'
+                value={formData.address}
                 type='text'
                 onChange={handleChange}
                 required='required'
@@ -140,6 +147,7 @@ const Patient = props => {
               <input
                 name='sex'
                 type='text'
+                value={formData.sex}
                 onChange={handleChange}
                 required='required'
               />
@@ -153,6 +161,7 @@ const Patient = props => {
                 type='number'
                 onChange={handleChange}
                 required='required'
+                value={formData.phone}
                 maxLength='10'
               />
             </div>
@@ -162,6 +171,7 @@ const Patient = props => {
             <div className='form-item'>
               <input
                 name='age'
+                value={formData.age}
                 type='number'
                 onChange={handleChange}
                 required='required'
@@ -182,6 +192,7 @@ const Patient = props => {
               <input
                 name='cp'
                 type='number'
+                value={formData.cp}
                 step='0.0001'
                 onChange={handleChange}
                 required='required'
@@ -195,6 +206,7 @@ const Patient = props => {
                 name='trestbps'
                 step='0.0001'
                 type='number'
+                value={formData.trestbps}
                 onChange={handleChange}
                 required='required'
               />
@@ -204,6 +216,7 @@ const Patient = props => {
             <label>Chol :</label>
             <div className='form-item'>
               <input
+                value={formData.chol}
                 name='chol'
                 step='0.0001'
                 type='number'
@@ -216,6 +229,7 @@ const Patient = props => {
             <label>Fbs :</label>
             <div className='form-item'>
               <input
+                value={formData.fbs}
                 name='fbs'
                 step='0.0001'
                 type='number'
@@ -229,6 +243,7 @@ const Patient = props => {
             <div className='form-item'>
               <input
                 name='restecg'
+                value={formData.restecg}
                 step='0.0001'
                 type='number'
                 onChange={handleChange}
@@ -241,6 +256,7 @@ const Patient = props => {
             <div className='form-item'>
               <input
                 name='thalach'
+                value={formData.thalach}
                 step='0.0001'
                 type='number'
                 onChange={handleChange}
@@ -254,6 +270,7 @@ const Patient = props => {
               <input
                 name='exang'
                 step='0.0001'
+                value={formData.exang}
                 type='number'
                 onChange={handleChange}
                 required='required'
@@ -265,6 +282,7 @@ const Patient = props => {
             <div className='form-item'>
               <input
                 name='oldpeak'
+                value={formData.oldpeak}
                 step='0.0001'
                 type='number'
                 onChange={handleChange}
@@ -277,6 +295,7 @@ const Patient = props => {
             <div className='form-item'>
               <input
                 name='slope'
+                value={formData.slope}
                 step='0.0001'
                 type='number'
                 onChange={handleChange}
@@ -289,6 +308,7 @@ const Patient = props => {
             <div className='form-item'>
               <input
                 name='ca'
+                value={formData.ca}
                 type='number'
                 step='0.0001'
                 onChange={handleChange}
@@ -302,12 +322,21 @@ const Patient = props => {
               <input
                 name='thal'
                 step='0.0001'
+                value={formData.thal}
                 type='number'
                 onChange={handleChange}
                 required='required'
               />
             </div>
           </Form.Field>
+          <p>Patient Image</p>
+          <input
+            accept='image/*'
+            id='image2'
+            type='file'
+            onChange={e => setImage2(e.target.files[0])}
+          />
+          <p>Scan</p>
           <input
             accept='image/*'
             id='image'

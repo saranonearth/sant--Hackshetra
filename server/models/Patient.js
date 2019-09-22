@@ -22,7 +22,17 @@ const PatientSchema = new Schema({
     address: String,
     hospital: String,
     img: String,
-    Pimg: String
+    Pimg: String,
+    userImg: String,
+    lungCancer: {
+        type: Boolean,
+        default: false
+    },
+    heartDisease: {
+        type: Boolean,
+        default: false
+    },
+    priscription: String
 }, {
     timestamps: true
 })

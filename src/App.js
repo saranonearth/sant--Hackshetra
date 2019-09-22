@@ -26,7 +26,7 @@ function App() {
             <Route path='/onboard/Hospital' component={OnboardHospital} />{' '}
             <Route path='/onboard/HospitalDash' component={HospitalDash} />{' '}
             <Route path='/onboard/DoctorDash' component={DoctorDash} />{' '}
-            <Route path='/patientDetails' component={PatientDetails} />{' '}
+            <Route path='/patientDetails/:id' component={PatientDetails} />{' '}
             <Route path='/onboard' component={Onboard} />{' '}
             <Route component={Error404} />
           </Switch>{' '}

@@ -127,12 +127,17 @@ body {
   width: 60%;
 }
 
-.details {
-  display: flex;
-  float: left;
+
+.strong {
+  font-weight: 900;
 }
 
 .details-value {
   margin-left: 50%;
   margin-right: 50%;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }

@@ -63,7 +63,8 @@ router.post('/patient', async (req, res) => {
         phone,
         address,
         img,
-        Pimg
+        Pimg,
+        userImg
     } = req.body;
     try {
         const newPatient = new Patient({
@@ -86,7 +87,8 @@ router.post('/patient', async (req, res) => {
             phone,
             address,
             img,
-            Pimg
+            Pimg,
+            userImg
         })
 
         await newPatient.save();
@@ -214,7 +216,20 @@ router.get('/doctor', async (req, res) => {
     }
 })
 
-
+//get all patients
+router.get('/allpatients', async (req, res) => {
+    const pId = req.query.id;
+    try {
+        const patient = await Patient.find({
+            _id: pId
+        }).populate('user')
+        return res.status(200).json(patient)
+    } catch (error) {
+        res.status(500).json({
+            msg: 'Server Error'
+        })
+    }
+})
 
 module.exports = router;
 
