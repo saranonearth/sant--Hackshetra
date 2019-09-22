@@ -6,17 +6,37 @@ import pytesseract
 from PIL import Image
 from utils import downloadImg
 from keras.models import model_from_json
+from pymongo import MongoClient
+import pandas as pd
+
 
 app  = Flask(__name__)
+
+features = ['age', 'sex', 'cp', 'trestbps',
+            'chol', 'fbs', 'restecg',
+            'thalach', 'exang', 'oldpeak',
+            'slope', 'ca']
+
+import pymongo
+client = pymongo.MongoClient("mongodb+srv://saranonearth:s123@cluster0-4z81e.mongodb.net/sante?retryWrites=true&w=majority")
+db = client.sante
 
 @app.route('/getHeartPredictions')
 def get_HeartPredictions():
     file_path = "../resources/xgb.pickle.dat"
     xgb = pickle.load(open(file_path, "rb"))
-    response = requests.get("YOUR URL HERE")
-    response = response.json()
-    X = response ## process the response
-    prediction = xgb.predict(X)
+    collections = db['patients']
+    doc = collections.find({})
+    doc_dict = list()
+    for i in doc:
+        doc_dict.append(i)
+
+    X_t = pd.DataFrame(columns=features)
+    for entry in doc_dict:
+        for col in features:
+            X_t[col] = entry.get(col)
+
+    prediction = xgb.predict(X_t)
 
     return prediction
 
@@ -37,9 +57,19 @@ def getXrayPredictions():
     typ= "PRE"
     img_width, img_height = 150, 150
     
-    response = requests.get("YOUR URL HERE")
-    img_url = response.json() ##Do something here
-    downloadImg(img_url,'Pre')
+    collections = db['patients']
+    doc = collections.find({})
+    query = collections.find({ "email": { "$nin":[ ""]}})
+    doc_dict,url = list(),list()
+    for q in query:
+        doc_dict.append(q)
+    
+    for entry in doc_dict:
+        url.append(entry.get('img'))
+    
+    url_i = url[0]
+    response = requests.get(url_i)
+    downloadImg(img_url,'XRAY')
     img_path = '../resources/input_XRay.jpg'
     
     json_o = open('model.json', 'r').read()

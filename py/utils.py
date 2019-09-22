@@ -50,7 +50,7 @@ def downloadImg(url,typ):
         s= 'Pre'
     else:
         s="XRay"
-    with open('../resources/input_{s}.jpg', 'wb') as handle:
+    with open(f'../resources/input_{s}.jpg', 'wb') as handle:
             response = requests.get(url, stream=True)
             for block in response.iter_content(1024):
                 if not block:
