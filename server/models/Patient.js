@@ -3,33 +3,36 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const PatientSchema = new Schema({
-    user: {
-        type: Schema.Types.ObjectId,
-        required: true,
-        ref: 'users'
-    },
     name: String,
-    contact: String,
-    age: String,
-    sex: String,
-    cp: String,
-    trestbps: String,
-    chol: String,
-    fbs: String,
-    restecg: String,
-    thalach: String,
-    exang: String,
-    oldpeak: String,
-    slope: String,
-    ca: String,
-    thal: String,
-    target: String,
+    age: Number,
+    sex: Number,
+    cp: Number,
+    trestbps: Number,
+    chol: Number,
+    fbs: Number,
+    restecg: Number,
+    thalach: Number,
+    exang: Number,
+    oldpeak: Number,
+    slope: Number,
+    ca: Number,
+    thal: Number,
     doctor: String,
-    contact: [{
-        phone: String,
-        address: String
-    }],
-    hospital: String
+    phone: Number,
+    address: String,
+    hospital: String,
+    img: String,
+    Pimg: String,
+    userImg: String,
+    lungCancer: {
+        type: Boolean,
+        default: false
+    },
+    heartDisease: {
+        type: Boolean,
+        default: false
+    },
+    priscription: String
 }, {
     timestamps: true
 })

@@ -6,20 +6,36 @@ export default function reducer(state, action) {
     } = action;
 
     switch (type) {
-<<<<<<< HEAD
+
 
 
         default:
             return state;
-=======
+
         case 'LOGIN':
+            window.localStorage.setItem('sante', JSON.stringify(payload))
             return {
                 ...state,
                 user: payload,
                     isAuth: true
             }
+
+            case 'LOGOUT':
+                return {
+                    ...state,
+                    user: null,
+                        isAuth: false
+                }
+                case 'UTYPE':
+                    return {
+                        ...state,
+                        user: payload
+                    }
+                    default:
+                        return state;
+
             default:
                 return state;
->>>>>>> a311241343f93941de24d10c9511dc9b0ae3f5b7
+
     }
 }

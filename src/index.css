@@ -41,39 +41,43 @@ body {
 }
 
 .hospital-dashboard-menu {
-    background-color: #4dd0e0  !important;
+  background-color: #4dd0e0 !important;
 }
 
 .list-head-colored {
   background-color: #4dd0e0;
-  height:40px;
-  padding:0px;
+  height: 40px;
+  padding: 0px;
 }
 
 .list-head-content-colored {
-  padding-top: 10px;;
+  padding-top: 10px;
+
 }
 
 .list-heading {
-  display:flex;
+  display: flex;
   float: left;
 }
 
 .list-heads-title {
   margin-left: 70%;
-  margin-right:70%;
-  color:white;
+  margin-right: 70%;
+  color: white;
 }
 
 .add-patient {
-  color:white;
+  color: white;
 }
 
 .list-heads {
-  margin-left: 70%;
-  margin-right:70%;
+  margin-left: 0%;
+  margin-right: 0%;
+  width: 255px;
+  text-align: center;
   /* color:white; */
 }
+
 .title>h1 {
   font-size: 10em;
 }
@@ -89,20 +93,51 @@ body {
   color: white !important;
 }
 
+.onboard {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  justify-content: space-between;
+  margin: auto;
+  align-self: center;
+  margin-top: 100px;
 
-.user-card {
-  margin-top:5%;
-  margin-left: 35%;
-  height:60;
-  width:60%;
 }
 
-.details {
-  display:flex;
-  float: left;
+.nobg {
+  background: none !important;
+}
+
+.center {
+  text-align: center;
+}
+
+.white {
+  color: white !important;
+}
+
+.lg {
+  font-size: 1em !important;
+}
+
+.user-card {
+  margin-top: 5%;
+  margin-left: 35%;
+  height: 60;
+  width: 60%;
+}
+
+
+.strong {
+  font-weight: 900;
 }
 
 .details-value {
   margin-left: 50%;
-  margin-right:50%;
+  margin-right: 50%;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }

@@ -13,10 +13,9 @@ const DoctorSchema = new Schema({
         default: null,
         required: true
     },
-    contact: [{
-        phone: String,
-        address: String
-    }],
+    phone: Number,
+    address: String
+
 }, {
     timestamps: true
 })

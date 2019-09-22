@@ -1,17 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Form, Container } from 'semantic-ui-react';
-// import Context from '../contextStore/Context';
-// import axios from 'axios';
-// import { Redirect , Link } from 'react-router-dom';
 const OnboardHospital = props => {
   const [formData, setFormData] = useState({
     address: '',
-<<<<<<< HEAD
-    phone: ''
-=======
     phone: '',
-    name:''
->>>>>>> a311241343f93941de24d10c9511dc9b0ae3f5b7
+
+    name: ''
+
   });
 
   const handleChange = e => {
@@ -31,9 +26,9 @@ const OnboardHospital = props => {
         <h1>Hospital</h1>
         <Form onSubmit={onSubmit}>
           <Form.Field>
-<<<<<<< HEAD
+
             <label>Contact Number :</label>
-=======
+
             <label>Name:</label>
             <input
               name='name'
@@ -44,7 +39,7 @@ const OnboardHospital = props => {
           </Form.Field>
           <Form.Field>
             <label>Contact Number:</label>
->>>>>>> a311241343f93941de24d10c9511dc9b0ae3f5b7
+
             <input
               name='phone'
               onChange={handleChange}
@@ -54,11 +49,10 @@ const OnboardHospital = props => {
             />
           </Form.Field>
           <Form.Field>
-<<<<<<< HEAD
-            <label>Address</label>
-=======
+
+
             <label>Address:</label>
->>>>>>> a311241343f93941de24d10c9511dc9b0ae3f5b7
+
             <input
               name='address'
               onChange={handleChange}

@@ -8,7 +8,6 @@ import { Button, Form, Container } from 'semantic-ui-react';
 import HomeImg from '../homeImg.png';
 >>>>>>> a311241343f93941de24d10c9511dc9b0ae3f5b7
 import axios from 'axios';
-import { Button } from 'semantic-ui-react';
 
 const Home = props => {
 <<<<<<< HEAD
@@ -99,6 +98,15 @@ const Home = props => {
         <div>
           <p className='sub'>Making people healthy.</p>
           {state.isAuth ? (
+            <button
+              onClick={() => {
+                props.history.push('/onboard');
+              }}
+              className='ui button clg'
+            >
+              Dashboard
+            </button>
+          ) : (
             <GoogleLogin
               clientId={config.GIDKEY}
               buttonText='Join Us.'
@@ -106,15 +114,6 @@ const Home = props => {
               onFailure={onfailure}
               cookiePolicy={'single_host_origin'}
             />
-          ) : (
-            <button
-              onClick={() => {
-                props.history.push('/onboard');
-              }}
-              class='ui button clg'
-            >
-              Dashboard
-            </button>
           )}
         </div>
       </div>

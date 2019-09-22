@@ -7,14 +7,14 @@ const Hospital = require('../models/Hospital');
 
 //Update USER TYPE (PATCH)
 
-router.patch('/', isAuth, async (req, res) => {
+router.patch('/', async (req, res) => {
     const type = req.query.type;
-    console.log(type)
-
+    console.log(type);
+    const id = req.body.id;
     try {
 
         const user = await User.findById({
-            _id: req.user
+            _id: id
         });
         console.log(user)
         if (!user) {
@@ -42,10 +42,10 @@ router.patch('/', isAuth, async (req, res) => {
 
 //add new Patient
 
-router.post('/patient', isAuth, async (req, res) => {
+router.post('/patient', async (req, res) => {
     const {
+
         name,
-        contact,
         age,
         sex,
         cp,
@@ -59,15 +59,17 @@ router.post('/patient', isAuth, async (req, res) => {
         slope,
         ca,
         thal,
-        target,
         hospital,
         phone,
-        address
+        address,
+        img,
+        Pimg,
+        userImg
     } = req.body;
     try {
         const newPatient = new Patient({
+
             name,
-            contact,
             age,
             sex,
             cp,
@@ -81,16 +83,19 @@ router.post('/patient', isAuth, async (req, res) => {
             slope,
             ca,
             thal,
-            target,
             hospital,
             phone,
-            address
+            address,
+            img,
+            Pimg,
+            userImg
         })
 
         await newPatient.save();
 
         return res.status(200).json(newPatient);
     } catch (error) {
+        console.log(error)
         res.status(500).json({
             msg: 'Server Error'
         })
@@ -118,8 +123,9 @@ router.delete('/patient', isAuth, async () => {
 
 // create Doctor ()
 
-router.post('/doctor', isAuth, async (req, res) => {
+router.post('/doctor', async (req, res) => {
     const {
+        user,
         phone,
         address,
         specialization
@@ -127,6 +133,7 @@ router.post('/doctor', isAuth, async (req, res) => {
 
     try {
         const newDoctor = new Doctor({
+            user,
             phone,
             address,
             specialization
@@ -146,15 +153,17 @@ router.post('/doctor', isAuth, async (req, res) => {
 
 // create Hospital
 
-router.post('/hospital', isAuth, async (req, res) => {
+router.post('/hospital', async (req, res) => {
     const {
+        user,
         phone,
         address,
         hospitalName
     } = req.body;
 
     try {
-        const newHospital = new Doctor({
+        const newHospital = new Hospital({
+            user,
             phone,
             address,
             hospitalName
@@ -164,6 +173,7 @@ router.post('/hospital', isAuth, async (req, res) => {
 
         return res.status(200).json(newHospital)
     } catch (error) {
+        console.log(error)
         res.status(500).json({
             msg: 'Server Error'
         })
@@ -173,7 +183,7 @@ router.post('/hospital', isAuth, async (req, res) => {
 
 //get all patience of hospital
 
-router.get('/hospital', isAuth, async (req, res) => {
+router.get('/hospital', async (req, res) => {
     const hospital = req.query.hospital;
 
     try {
@@ -190,7 +200,7 @@ router.get('/hospital', isAuth, async (req, res) => {
 })
 
 //get all patience of a doctor
-router.get('/doctor', isAuth, async (req, res) => {
+router.get('/doctor', async (req, res) => {
     const doctor = req.query.doctor;
 
     try {
@@ -206,7 +216,20 @@ router.get('/doctor', isAuth, async (req, res) => {
     }
 })
 
-
+//get all patients
+router.get('/allpatients', async (req, res) => {
+    const pId = req.query.id;
+    try {
+        const patient = await Patient.find({
+            _id: pId
+        }).populate('user')
+        return res.status(200).json(patient)
+    } catch (error) {
+        res.status(500).json({
+            msg: 'Server Error'
+        })
+    }
+})
 
 module.exports = router;
 

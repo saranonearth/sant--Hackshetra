@@ -1,19 +1,23 @@
 import React, { useContext, useState } from 'react';
 import { Button, Form, Container } from 'semantic-ui-react';
-// import Context from '../contextStore/Context';
-// import axios from 'axios';
-// import { Redirect , Link } from 'react-router-dom';
+import TopPanel from './topPanel';
+import axios from 'axios';
+import Context from '../contextStore/Context';
+import { Redirect } from 'react-router-dom';
 const OnboardDoctor = props => {
+  const { state } = useContext(Context);
+
   const [formData, setFormData] = useState({
     specialization: '',
-<<<<<<< HEAD
-    phone: ''
-=======
-    phone: '',
-    address:''
->>>>>>> a311241343f93941de24d10c9511dc9b0ae3f5b7
-  });
 
+
+    phone: '',
+
+    address: ''
+
+
+  });
+  if (state.isAuth == false) return <Redirect to={'/'} />;
   const handleChange = e => {
     setFormData({
       ...formData,
@@ -21,12 +25,35 @@ const OnboardDoctor = props => {
     });
   };
 
-  const onSubmit = () => {
-    console.log(formData);
+  const onSubmit = async e => {
+    e.preventDefault();
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      };
+      console.log(state.user._id);
+      const body = JSON.stringify({ ...formData, user: state.user._id });
+      const res = await axios.post(
+        'http://localhost:4000/user/doctor',
+        body,
+        config
+      );
+      if (state.user.userType === 'doctors') {
+        props.history.push('/onboard/DoctorDash');
+      }
+      if (state.user.userType === 'hospitals') {
+        props.history.push('/onboard/HospitalDash');
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <>
+      <TopPanel />
       <Container>
         <h1>Doctor</h1>
         <br />
@@ -39,6 +66,17 @@ const OnboardDoctor = props => {
                 onChange={handleChange}
                 type='text'
                 maxLength='10'
+                required='required'
+              />
+            </div>
+          </Form.Field>
+          <Form.Field>
+            <label htmlFor='phone'>Address :</label>
+            <div className='form-item'>
+              <input
+                name='address'
+                onChange={handleChange}
+                type='text'
                 required='required'
               />
             </div>
@@ -58,8 +96,7 @@ const OnboardDoctor = props => {
               </select>
             </div>
           </Form.Field>
-<<<<<<< HEAD
-=======
+
           <Form.Field>
             <label>Address:</label>
             <input
@@ -69,7 +106,7 @@ const OnboardDoctor = props => {
               required='required'
             />
           </Form.Field>
->>>>>>> a311241343f93941de24d10c9511dc9b0ae3f5b7
+
           <Button>Send</Button>
         </Form>
       </Container>

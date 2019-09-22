@@ -9,10 +9,8 @@ const HospitalSchema = new Schema({
         ref: 'users'
     },
     hospitalName: String,
-    contact: [{
-        phone: String,
-        address: String
-    }],
+    phone: String,
+    address: String
 }, {
     timestamps: true
 })
