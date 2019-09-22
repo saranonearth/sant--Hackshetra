@@ -32,13 +32,19 @@ def get_HeartPredictions():
     doc_dict = list()
     for i in doc:
         doc_dict.append(i)
-
+    names = list()
     X_t = pd.DataFrame(columns=features)
     for entry in doc_dict:
+        names.append(entry.get('name'))
         for col in features:
             X_t[col] = entry.get(col)
 
     prediction = xgb.predict(X_t)
+    for n,p in zip(names,prediction):
+        if p==1:
+            collections.update_one({"name":f"{n}"}, {"$set":{"heartDisease":"True"}})
+        else:
+            collections.update_one({"name":f"{n}"}, {"$set":{"heartDisease":"False"}})
 
     return prediction
 
@@ -65,11 +71,12 @@ def getXrayPredictions():
     doc_dict,url = list(),list()
     for q in query:
         doc_dict.append(q)
-    
+    url,name = list(),list()
     for entry in doc_dict:
         url.append(entry.get('img'))
+        name.append(entry.get('name'))
     
-    url_i = url[0]
+    url_i,name_i = url[0],name[0]
     response = requests.get(url_i)
     downloadImg(img_url,'XRAY')
     img_path = '../resources/input_XRay.jpg'
@@ -93,15 +100,16 @@ def getXrayPredictions():
     train_generator = train_datagen.flow_from_directory(
     img_path,
     target_size=(img_width, img_height),
-    batch_size=batch_size,
+    batch_size=1,
     class_mode='binary')
 
-    prediction = model.evaluate_generator(img)
-
+    prediction = model.evaluate_generator(train_generator)
+    if prediction==1:
+        collections.update_one({"name":f"{name_i}"}, {"$set":{"lungCancer":"True"}})
+    else:
+        collections.update_one({"name":f"{name_i}"}, {"$set":{"lungCancer":"False"}})
     return prediction
     
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
