@@ -6,7 +6,12 @@ import { Button, Form, Container } from 'semantic-ui-react';
 const OnboardHospital = props => {
   const [formData, setFormData] = useState({
     address: '',
+<<<<<<< HEAD
     phone: ''
+=======
+    phone: '',
+    name:''
+>>>>>>> a311241343f93941de24d10c9511dc9b0ae3f5b7
   });
 
   const handleChange = e => {
@@ -26,7 +31,20 @@ const OnboardHospital = props => {
         <h1>Hospital</h1>
         <Form onSubmit={onSubmit}>
           <Form.Field>
+<<<<<<< HEAD
             <label>Contact Number :</label>
+=======
+            <label>Name:</label>
+            <input
+              name='name'
+              onChange={handleChange}
+              type='text'
+              required='required'
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Contact Number:</label>
+>>>>>>> a311241343f93941de24d10c9511dc9b0ae3f5b7
             <input
               name='phone'
               onChange={handleChange}
@@ -36,7 +54,11 @@ const OnboardHospital = props => {
             />
           </Form.Field>
           <Form.Field>
+<<<<<<< HEAD
             <label>Address</label>
+=======
+            <label>Address:</label>
+>>>>>>> a311241343f93941de24d10c9511dc9b0ae3f5b7
             <input
               name='address'
               onChange={handleChange}

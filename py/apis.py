@@ -8,6 +8,7 @@ from utils import downloadImg
 from keras.models import model_from_json
 from pymongo import MongoClient
 import pandas as pd
+from keras.preprocessing.image import ImageDataGenerator, load_img
 
 
 app  = Flask(__name__)
@@ -16,6 +17,7 @@ features = ['age', 'sex', 'cp', 'trestbps',
             'chol', 'fbs', 'restecg',
             'thalach', 'exang', 'oldpeak',
             'slope', 'ca']
+img_width, img_height = 150, 150
 
 import pymongo
 client = pymongo.MongoClient("mongodb+srv://saranonearth:s123@cluster0-4z81e.mongodb.net/sante?retryWrites=true&w=majority")
@@ -82,8 +84,19 @@ def getXrayPredictions():
     else:
         input_shape = (img_width, img_height, 3)
 
-    img = 0## do something here
-    prediction = model.predict(img)
+    train_datagen = ImageDataGenerator(
+    rescale=1. / 255,
+    shear_range=0.2,
+    zoom_range=0.2,
+    horizontal_flip=True)
+
+    train_generator = train_datagen.flow_from_directory(
+    img_path,
+    target_size=(img_width, img_height),
+    batch_size=batch_size,
+    class_mode='binary')
+
+    prediction = model.evaluate_generator(img)
 
     return prediction
     
