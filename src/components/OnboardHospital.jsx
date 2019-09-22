@@ -4,7 +4,9 @@ const OnboardHospital = props => {
   const [formData, setFormData] = useState({
     address: '',
     phone: '',
+
     name: ''
+
   });
 
   const handleChange = e => {
@@ -24,6 +26,9 @@ const OnboardHospital = props => {
         <h1>Hospital</h1>
         <Form onSubmit={onSubmit}>
           <Form.Field>
+
+            <label>Contact Number :</label>
+
             <label>Name:</label>
             <input
               name='name'
@@ -34,6 +39,7 @@ const OnboardHospital = props => {
           </Form.Field>
           <Form.Field>
             <label>Contact Number:</label>
+
             <input
               name='phone'
               onChange={handleChange}
@@ -43,7 +49,10 @@ const OnboardHospital = props => {
             />
           </Form.Field>
           <Form.Field>
+
+
             <label>Address:</label>
+
             <input
               name='address'
               onChange={handleChange}

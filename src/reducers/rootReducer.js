@@ -6,6 +6,12 @@ export default function reducer(state, action) {
     } = action;
 
     switch (type) {
+
+
+
+        default:
+            return state;
+
         case 'LOGIN':
             window.localStorage.setItem('sante', JSON.stringify(payload))
             return {
@@ -13,6 +19,7 @@ export default function reducer(state, action) {
                 user: payload,
                     isAuth: true
             }
+
             case 'LOGOUT':
                 return {
                     ...state,
@@ -26,5 +33,9 @@ export default function reducer(state, action) {
                     }
                     default:
                         return state;
+
+            default:
+                return state;
+
     }
 }
